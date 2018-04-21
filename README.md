@@ -1,5 +1,5 @@
-# laravel
-Projects using Laravel framework - for studying purpose.
+# web-projects
+Web app projects.
 Technologies: Laravel(PHP) | Vue.js
 
 Laravel documentation(version 5.6): https://laravel.com/docs/5.6
@@ -11,25 +11,26 @@ Vue.js Guide: https://vuejs.org/v2/guide/
 -------------- PROJECT COMMANDS GUIDE --------------
 
 TO CREATE:
-composer create-project --prefer-dist laravel/laravel PROJECT_NAME "LARAVEL_VERSION"
+LARAVEL: composer create-project --prefer-dist laravel/laravel PROJECT_NAME "LARAVEL_VERSION"
+VUE.JS: vue init webpack PROJECT_NAME
 
-TO RUN PROJECT:
+TO RUN PROJECT: (LARAVEL)
 1. go inside the project folder
 2. run -> php artisan serve
 ps: localhost:8000 (default port to run the application)
 
-TO ADD AUTH:
+TO RUN PROJECT: (VUE.JS)
 1. go inside the project folder
-2. run -> php artisan make:auth
+2. npm install (first time)
+3. npm run dev
 
-TO CREATE DATABASE TABLE:
-1. go inside the project folder
-2. run -> php artisan migrate
+TO CHANGE PORT(Vue.js):
+1. config/index.js -> port
 
 TO INSTALL NODE DEPENDENCIES:
 1. go inside the project folder
 2. run -> npm install
-ps: to use javascript tools(ex. VueJs)
+ps: to use javascript tools(ex. Vue.js)
 
 TO UPDATE CHANGES IN JS FILES:
 1. go inside the project folder
@@ -41,4 +42,31 @@ TO CREATE AND USE A NEW COMPONENT:
 3. compile -> npm run dev
 4. READY TO GO!
 
-BINDING VARIABLES TO COMPONENTS: <tag v-bind:class="VAR_NAME">...</tag>
+
+USING VUE.JS:
+
+// CONDITIONALS AND LOOPS
+data: {
+	show: true,
+	users: [
+		{ name: "Bob" },
+		{ name: "Amanda" }
+	]
+}
+<p v-show="show"> This is show </p>
+
+<p v-if="show">This is show</p>
+<p v-else>This is not</p>
+
+<li v-for="user in users"> {{user.name}} </li>
+
+// CLASS AND STYLE BINDINGS
+data: {
+	isActive: true,
+	activeColor: 'red'
+}
+
+//BINDING VARIABLES TO COMPONENTS:
+<tag v-bind:class="VAR_NAME">...</tag>
+<div v-bind:class="{active: isActive}"></div>
+<div v-bind:style="{color: activeColor}"></div>
