@@ -41,32 +41,3 @@ TO CREATE AND USE A NEW COMPONENT:
 2. declare that component in app.js file (resources/assets/js)
 3. compile -> npm run dev
 4. READY TO GO!
-
-
-USING VUE.JS:
-
-// CONDITIONALS AND LOOPS
-data: {
-	show: true,
-	users: [
-		{ name: "Bob" },
-		{ name: "Amanda" }
-	]
-}
-<p v-show="show"> This is show </p>
-
-<p v-if="show">This is show</p>
-<p v-else>This is not</p>
-
-<li v-for="user in users"> {{user.name}} </li>
-
-// CLASS AND STYLE BINDINGS
-data: {
-	isActive: true,
-	activeColor: 'red'
-}
-
-//BINDING VARIABLES TO COMPONENTS:
-<tag v-bind:class="VAR_NAME">...</tag>
-<div v-bind:class="{active: isActive}"></div>
-<div v-bind:style="{color: activeColor}"></div>
