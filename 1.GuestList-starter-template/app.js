@@ -8,14 +8,32 @@ new Vue({
         },
         guestName: "",
         guesttList: [],
+        submittedClass: "guestsNot",
     },
     methods: {
         submitForm: function() {
-            var msg = this.guestName + " inserted."
+            // para transformar a primeira letra em maiuscula
+            var firstUppercase = function( str ) {
+                return str[0].toUpperCase() + str.slice(1) //...slice(BEGIN,[END])
+            }
+            var msg = firstUppercase( this.guestName ) + " inserted."
             //alert(msg)
-            this.guesttList.push(this.guestName)
+            this.guesttList.push( firstUppercase( this.guestName ) )
             this.guestName = ""
-            console.log(this.guesttList)
+            if( this.guesttList.length > 0 ) {
+                this.submittedClass = "guestsOn"
+            } else {
+                this.submittedClass = "guestsNot"
+            }
+        },
+        getLength: function( arr ) {
+            return arr.length
+        },
+        removeGuest: function( guest ) {
+            this.guesttList.splice( this.guesttList.indexOf( guest ), 1)
+            if( !(this.guesttList.length > 0) ) {
+                this.submittedClass = "guestsNot"
+            }
         }
     }
 })
