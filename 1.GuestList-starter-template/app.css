@@ -14,3 +14,7 @@
 .guestsOn {
     background: #5cb85c;
 }
+
+.pointerCursor {
+    cursor: pointer;
+}

@@ -41,3 +41,7 @@ TO CREATE AND USE A NEW COMPONENT:
 2. declare that component in app.js file (resources/assets/js)
 3. compile -> npm run dev
 4. READY TO GO!
+
+VUE.JS TIPS:
+v-bind:style & v-bind:class => :style & :class
+v-on:submit.prevent => @submit.prevent
