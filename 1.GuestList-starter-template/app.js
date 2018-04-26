@@ -7,8 +7,11 @@ new Vue({
             eventDescript: "As the event's name says...",
         },
         backupEventTitle: "Event Title",
+        eventTitle: "",
+        title: "",
         guestName: "",
-        name: "ABC",
+        eventDsc: "",
+        description: "",
         guesttList: [],
         submittedClass: "guestsNot",
         guestNamePreview: {
@@ -36,6 +39,12 @@ new Vue({
                     this.submittedClass = "guestsNot"
                 }
             }
+        },
+        submitTitle: function() {
+            this.title = this.eventTitle
+        },
+        submitDescription: function() {
+            this.description = this.eventDsc
         },
         getLength: function( arr ) {
             if( arr.length === 0 ) {
