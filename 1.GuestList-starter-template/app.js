@@ -9,14 +9,20 @@ new Vue({
         backupEventTitle: "Event Title",
         eventTitle: "",
         title: "",
-        guestName: "",
         eventDsc: "",
         description: "",
-        guesttList: [],
+        eventCapacity: 0,
+        capacity: 0,
+        confirmCapacity: false,
+        guestName: "",
+        guestList: [],
         submittedClass: "guestsNot",
         guestNamePreview: {
             paddingLeft: "20px",
             color: "#c0c0c0"
+        },
+        buttonStyle: {
+            width: "70px",
         },
         guestButton: "card-success rounded name-box pointerCursor",
     },
@@ -31,9 +37,9 @@ new Vue({
                 }
                 var msg = firstUppercase( this.guestName ) + " inserted."
                 //alert(msg)
-                this.guesttList.push( firstUppercase( this.guestName ) )
+                this.guestList.push( firstUppercase( this.guestName ) )
                 this.guestName = ""
-                if( this.guesttList.length > 0 ) {
+                if( this.guestList.length > 0 ) {
                     this.submittedClass = "guestsOn"
                 } else {
                     this.submittedClass = "guestsNot"
@@ -46,6 +52,16 @@ new Vue({
         submitDescription: function() {
             this.description = this.eventDsc
         },
+        submitCapacity: function() {
+            // this.capacity = this.eventCapacity
+            if( this.eventCapacity < 0 ) {
+                this.confirmCapacity = false
+                alert( "Capacity must be equal or over 0." )
+            } else {
+                this.capacity = this.eventCapacity
+                this.confirmCapacity = true
+            }
+        },
         getLength: function( arr ) {
             if( arr.length === 0 ) {
                 return "no guests"
@@ -54,8 +70,8 @@ new Vue({
             }
         },
         removeGuest: function( guest ) {
-            this.guesttList.splice( this.guesttList.indexOf( guest ), 1)
-            if( !(this.guesttList.length > 0) ) {
+            this.guestList.splice( this.guestList.indexOf( guest ), 1)
+            if( !(this.guestList.length > 0) ) {
                 this.submittedClass = "guestsNot"
             }
         },

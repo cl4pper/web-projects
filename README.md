@@ -43,5 +43,6 @@ TO CREATE AND USE A NEW COMPONENT:
 4. READY TO GO!
 
 VUE.JS TIPS:
-v-bind:style & v-bind:class => :style & :class
-v-on:submit.prevent => @submit.prevent
+1. CONDITIONALS: v-if, v-else-if, v-else
+2. v-bind:style & v-bind:class => :style & :class
+3. v-on:submit.prevent => @submit.prevent

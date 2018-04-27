@@ -9,10 +9,13 @@
 }
 
 .guestsNot {
-    background: #ff6666;
+    background: #ffff99;
 }
 .guestsOn {
     background: #5cb85c;
+}
+.fullGuests {
+    background: #ff6666;
 }
 
 .pointerCursor {

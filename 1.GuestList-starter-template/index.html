@@ -29,15 +29,16 @@
             </div>
             <div class="card-block">
               <!-- <h4 class="card-title" v-text="actualEvent.eventTitle">{{ backupEventTitle }}</h4><hr> -->
+              <!-- Adicionar titulo do evento. -->
               <div class="card-title">
                   <div v-if="title.length === 0">
                       <form class="form-inline" @submit.prevent="submitTitle">
                           <input type="text" class="form-control mb-2 mr-sm-2 mb-sm-0" placeholder="Event Title" v-model="eventTitle" />
-                          <input type="submit" class="btn btn-primary" />
+                          <input type="submit" class="btn btn-primary" :style="buttonStyle" value="OK" />
                       </form>
                   </div>
                   <div v-else>
-                      <h3>{{ title }}</h3>
+                      <h3>{{ title[0].toUpperCase() + title.slice(1) }}</h3>
                   </div>
               </div>
 
@@ -45,11 +46,24 @@
               <div v-if="description.length === 0">
                   <form class="form-inline" @submit.prevent="submitDescription">
                       <input type="text" class="form-control mb-2 mr-sm-2 mb-sm-0" placeholder="Event Description" v-model="eventDsc" />
-                      <input type="submit" class="btn btn-primary" />
+                      <input type="submit" class="btn btn-primary" :style="buttonStyle" value="OK" />
                   </form>
               </div>
               <div v-else>
-                  <h5>{{ description }}</h5>
+                  <h5>{{ description[0].toUpperCase() + description.slice(1)}}</h5>
+              </div>
+
+              <br />
+
+              <!-- Definir quantidade maxima de convidados. -->
+              <div v-if="confirmCapacity === false">
+                  <form class="form-inline">
+                      <input type="number" class="form-control mb-2 mr-sm-2 mb-sm-0" placeholder="Total Guests" v-model="eventCapacity" />
+                      <input @click="submitCapacity" class="btn btn-primary" :style="buttonStyle" value="OK" />
+                  </form>
+              </div>
+              <div v-else>
+                  <p>Maximum of guests allowed: <h2>{{ eventCapacity }}</h2></p>
               </div>
 
               <br />
@@ -58,7 +72,7 @@
 
               <form class="form-inline" @submit.prevent="submitForm">
                 <input type="text" id="nameInput" class="form-control mb-2 mr-sm-2 mb-sm-0" placeholder="Guest Name" v-model="guestName">
-                <input type="submit" class="btn btn-primary"></input>
+                <input type="submit" class="btn btn-primary" value="Add" :style="buttonStyle"></input>
                 <p class="card-text" :style="guestNamePreview"> {{ guestName }} </p>
               </form>
             </div>
@@ -70,12 +84,14 @@
         <div class="col-sm-12">
           <div class="card">
             <div class="card-header" :class="submittedClass">
-              Attending ({{ getLength( guesttList ) }})
+              Attending ({{ getLength( guestList ) }})
+              <br />
+              <progress></progress>
             </div>
             <div class="card-block">
               <div>
-                <h4 v-if="guesttList.length === 0">No names added yet...</h4>
-                <div v-else @click="removeGuest( oneGuest )" :class="guestButton" v-for="oneGuest in guesttList">
+                <h4 v-if="guestList.length === 0">No names added yet...</h4>
+                <div v-else @click="removeGuest( oneGuest )" :class="guestButton" v-for="oneGuest in guestList">
                     {{ oneGuest }}
                 </div>
               </div>
