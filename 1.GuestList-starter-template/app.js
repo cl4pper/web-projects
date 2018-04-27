@@ -40,7 +40,11 @@ new Vue({
                 this.guestList.push( firstUppercase( this.guestName ) )
                 this.guestName = ""
                 if( this.guestList.length > 0 ) {
-                    this.submittedClass = "guestsOn"
+                    if ( (this.guestList.length / this.eventCapacity) >= 1 ) {
+                        this.submittedClass = "fullGuests"
+                    } else {
+                        this.submittedClass = "guestsOn"
+                    }
                 } else {
                     this.submittedClass = "guestsNot"
                 }
@@ -71,7 +75,13 @@ new Vue({
         },
         removeGuest: function( guest ) {
             this.guestList.splice( this.guestList.indexOf( guest ), 1)
-            if( !(this.guestList.length > 0) ) {
+            if( this.guestList.length > 0 ) {
+                if ( (this.guestList.length / this.eventCapacity) >= 1 ) {
+                    this.submittedClass = "fullGuests"
+                } else {
+                    this.submittedClass = "guestsOn"
+                }
+            } else {
                 this.submittedClass = "guestsNot"
             }
         },

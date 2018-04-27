@@ -84,9 +84,12 @@
         <div class="col-sm-12">
           <div class="card">
             <div class="card-header" :class="submittedClass">
-              Attending ({{ getLength( guestList ) }})
-              <br />
-              <progress></progress>
+              <div v-if="(guestList.length == 0) || (eventCapacity == 0)">Attending ({{ getLength( guestList ) }})</div>
+              <div v-else>
+                  <!-- {{ ( getLength( guestList ) / eventCapacity ) * 100 }} -->
+                  <p>Attending ({{ getLength( guestList ) }}/{{ eventCapacity }})</p>
+                  <progress :style="{ width: (( getLength( guestList ) / eventCapacity ) * 100) + '%' }"></progress>
+              </div>
             </div>
             <div class="card-block">
               <div>
