@@ -7,13 +7,15 @@ new Vue({
             eventDescript: "As the event's name says...",
         },
         backupEventTitle: "Event Title",
+        confirmTitle: false,
         eventTitle: "",
         title: "",
+        confirmDescription: false,
         eventDsc: "",
         description: "",
+        confirmCapacity: false,
         eventCapacity: 0,
         capacity: 0,
-        confirmCapacity: false,
         guestName: "",
         guestList: [],
         submittedClass: "guestsNot",
@@ -52,9 +54,11 @@ new Vue({
         },
         submitTitle: function() {
             this.title = this.eventTitle
+            this.confirmTitle = true
         },
         submitDescription: function() {
             this.description = this.eventDsc
+            this.confirmDescription = true
         },
         submitCapacity: function() {
             // this.capacity = this.eventCapacity
@@ -88,5 +92,10 @@ new Vue({
         changeStatus: function() {
             return true
         },
+    }, // methods
+    computed: {
+        sortGuestList: function() {
+            return this.guestList.sort()
+        }
     }
 })

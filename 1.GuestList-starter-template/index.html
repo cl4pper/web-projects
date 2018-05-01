@@ -31,26 +31,26 @@
               <!-- <h4 class="card-title" v-text="actualEvent.eventTitle">{{ backupEventTitle }}</h4><hr> -->
               <!-- Adicionar titulo do evento. -->
               <div class="card-title">
-                  <div v-if="title.length === 0">
+                  <div v-if="confirmTitle === false">
                       <form class="form-inline" @submit.prevent="submitTitle">
                           <input type="text" class="form-control mb-2 mr-sm-2 mb-sm-0" placeholder="Event Title" v-model="eventTitle" />
                           <input type="submit" class="btn btn-primary" :style="buttonStyle" value="OK" />
                       </form>
                   </div>
                   <div v-else>
-                      <h3>{{ title[0].toUpperCase() + title.slice(1) }}</h3>
+                      <h3 @click="confirmTitle = false">{{ title[0].toUpperCase() + title.slice(1) }}</h3>
                   </div>
               </div>
 
               <!-- Adicionar descricao do evento. -->
-              <div v-if="description.length === 0">
+              <div v-if="confirmDescription === false">
                   <form class="form-inline" @submit.prevent="submitDescription">
                       <input type="text" class="form-control mb-2 mr-sm-2 mb-sm-0" placeholder="Event Description" v-model="eventDsc" />
                       <input type="submit" class="btn btn-primary" :style="buttonStyle" value="OK" />
                   </form>
               </div>
               <div v-else>
-                  <h5>{{ description[0].toUpperCase() + description.slice(1)}}</h5>
+                  <h5 @click="confirmDescription = false">{{ description[0].toUpperCase() + description.slice(1)}}</h5>
               </div>
 
               <br />
@@ -63,7 +63,7 @@
                   </form>
               </div>
               <div v-else>
-                  <p>Maximum of guests allowed: <h2>{{ eventCapacity }}</h2></p>
+                  <p>Maximum of guests allowed: <h2 @click="confirmCapacity = false">{{ eventCapacity }}</h2></p>
               </div>
 
               <br />
@@ -94,7 +94,7 @@
             <div class="card-block">
               <div>
                 <h4 v-if="guestList.length === 0">No names added yet...</h4>
-                <div v-else @click="removeGuest( oneGuest )" :class="guestButton" v-for="oneGuest in guestList">
+                <div v-else @click="removeGuest( oneGuest )" :class="guestButton" v-for="oneGuest in sortGuestList">
                     {{ oneGuest }}
                 </div>
               </div>
