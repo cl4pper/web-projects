@@ -25,7 +25,7 @@
         <div class="col-sm-12">
           <div class="card">
             <div class="card-header" :class="submittedClass">
-              {{ actualEvent.eventDate }}
+              Date
             </div>
             <div class="card-block">
               <!-- <h4 class="card-title" v-text="actualEvent.eventTitle">{{ backupEventTitle }}</h4><hr> -->
@@ -71,9 +71,9 @@
               <p class="card-text">Add your name to the guest list for exclusive offers:</p>
 
               <form class="form-inline" @submit.prevent="submitForm">
-                <input type="text" id="nameInput" class="form-control mb-2 mr-sm-2 mb-sm-0" placeholder="Guest Name" v-model="guestName">
+                <input type="text" id="nameInput" class="form-control mb-2 mr-sm-2 mb-sm-0" placeholder="Guest Name" v-model="name">
                 <input type="submit" class="btn btn-primary" value="Add" :style="buttonStyle"></input>
-                <p class="card-text" :style="guestNamePreview"> {{ guestName }} </p>
+                <p class="card-text" :style="guestNamePreview"> {{ name }} </p>
               </form>
             </div>
           </div>
@@ -81,26 +81,66 @@
       </div>
 
       <div class="row">
-        <div class="col-sm-12">
+        <!-- Lista de inscritos no evento -->
+        <div class="col-sm-5">
           <div class="card">
             <div class="card-header" :class="submittedClass">
-              <div v-if="(guestList.length == 0) || (eventCapacity == 0)">Attending ({{ getLength( guestList ) }})</div>
+              <div v-if="(invitedList.length == 0) || (eventCapacity == 0)">Invited ({{ getLength(invitedList) }})</div>
               <div v-else>
-                  <!-- {{ ( getLength( guestList ) / eventCapacity ) * 100 }} -->
-                  <p>Attending ({{ getLength( guestList ) }}/{{ eventCapacity }})</p>
-                  <progress :style="{ width: (( getLength( guestList ) / eventCapacity ) * 100) + '%' }"></progress>
+                  <!-- {{ ( getLength( invitedList ) / eventCapacity ) * 100 }} -->
+                  <p>Invited ({{ getLength(invitedList) }}/{{ eventCapacity }})</p>
+                  <progress :style="{ width: (( getLength( invitedList ) / eventCapacity ) * 100) + '%' }"></progress>
               </div>
             </div>
             <div class="card-block">
               <div>
-                <h4 v-if="guestList.length === 0">No names added yet...</h4>
-                <div v-else @click="removeGuest( oneGuest )" :class="guestButton" v-for="oneGuest in sortGuestList">
-                    {{ oneGuest }}
+                <h4 v-if="invitedList.length === 0">No names added yet...</h4>
+                <div v-else :class="guestButton" v-for="(guest, index) in sortInvitedList" :key="guest">
+                    <span @click="moveToAttendence( guest )">{{ index + 1 }}. {{ guest }}</span> <span @click="moveToTrash(guest, 0)">X</span>
                 </div>
               </div>
             </div>
           </div>
-
+        </div>
+        <!-- Lista dos que chegaram no evento -->
+        <div class="col-sm-5">
+          <div class="card">
+            <div class="card-header" :class="submittedClass">
+              <div v-if="(attendingList.length == 0) || (eventCapacity == 0)">Attending ({{ getLength(attendingList) }})</div>
+              <div v-else>
+                  <p>Attending ({{ getLength(attendingList) }}/{{ eventCapacity }})</p>
+                  <progress :style="{ width: (( getLength( attendingList ) / eventCapacity ) * 100) + '%' }"></progress>
+              </div>
+            </div>
+            <div class="card-block">
+              <div>
+                <h4 v-if="attendingList.length === 0">No names added yet...</h4>
+                <div v-else :class="guestButton" v-for="(guest, index) in attendingList" :key="guest">
+                    <span @click="moveToAttendence( guest )">{{ index + 1 }}. {{ guest }}</span> <span @click="moveToTrash(guest, 1)">X</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- Lista de pessoas para serem excluidas -->
+        <div class="col-sm-2">
+          <div class="card">
+            <div class="card-header" :class="submittedClass">
+              <div v-if="">Trash</div>
+              <div v-else>
+                  <p>Trash</p>
+                  <progress :style="{ width: (( getLength( attendingList ) / eventCapacity ) * 100) + '%' }"></progress>
+              </div>
+            </div>
+            <div class="card-block">
+              <div>
+                <h4 v-if="trashList.length === 0">...</h4>
+                <div v-else :class="guestButton" @click="deleteGuest" v-for="guest in trashList" :key="oneGuest">
+                    {{ guest }}
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </div>

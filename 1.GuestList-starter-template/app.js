@@ -16,8 +16,10 @@ new Vue({
         confirmCapacity: false,
         eventCapacity: 0,
         capacity: 0,
-        guestName: "",
-        guestList: [],
+        name: "",
+        invitedList: [],
+        attendingList: [],
+        trashList: [],
         submittedClass: "guestsNot",
         guestNamePreview: {
             paddingLeft: "20px",
@@ -30,19 +32,19 @@ new Vue({
     },
     methods: {
         submitForm: function() {
-            if( this.guestName === "" ) {
-                alert( "No name to be added!" )
+            if(this.name === "") {
+                alert("No name to be added!")
             } else {
                 // para transformar a primeira letra em maiuscula
-                var firstUppercase = function( str ) {
+                var firstUppercase = function(str) {
                     return str[0].toUpperCase() + str.slice(1) //...slice(BEGIN,[END])
                 }
-                var msg = firstUppercase( this.guestName ) + " inserted."
+                var msg = firstUppercase( this.name ) + " inserted."
                 //alert(msg)
-                this.guestList.push( firstUppercase( this.guestName ) )
-                this.guestName = ""
-                if( this.guestList.length > 0 ) {
-                    if ( (this.guestList.length / this.eventCapacity) >= 1 ) {
+                this.invitedList.push(firstUppercase(this.name))
+                this.name = ""
+                if( this.invitedList.length > 0 ) {
+                    if ((this.invitedList.length / this.eventCapacity) >= 1) {
                         this.submittedClass = "fullGuests"
                     } else {
                         this.submittedClass = "guestsOn"
@@ -62,25 +64,26 @@ new Vue({
         },
         submitCapacity: function() {
             // this.capacity = this.eventCapacity
-            if( this.eventCapacity < 0 ) {
+            if(this.eventCapacity < 0) {
                 this.confirmCapacity = false
-                alert( "Capacity must be equal or over 0." )
+                alert("Capacity must be equal or over 0.")
             } else {
                 this.capacity = this.eventCapacity
                 this.confirmCapacity = true
             }
         },
-        getLength: function( arr ) {
-            if( arr.length === 0 ) {
+        getLength: function(arr) {
+            if(arr.length === 0) {
                 return "no guests"
             } else {
                 return arr.length
             }
         },
-        removeGuest: function( guest ) {
-            this.guestList.splice( this.guestList.indexOf( guest ), 1)
-            if( this.guestList.length > 0 ) {
-                if ( (this.guestList.length / this.eventCapacity) >= 1 ) {
+        moveToAttendence: function(guest) {
+            this.attendingList.push(guest)
+            this.invitedList.splice( this.invitedList.indexOf(guest), 1)
+            if(this.invitedList.length > 0) {
+                if ((this.invitedList.length / this.eventCapacity) >= 1) {
                     this.submittedClass = "fullGuests"
                 } else {
                     this.submittedClass = "guestsOn"
@@ -89,13 +92,24 @@ new Vue({
                 this.submittedClass = "guestsNot"
             }
         },
+        moveToTrash: function(guest, lista) {
+            this.trashList.push(guest)
+            if(lista === 0) {
+                this.invitedList.splice(this.invitedList.indexOf(guest), 1)
+            } else {
+                this.attendingList.splice(this.attendingList.indexOf(guest), 1)
+            }
+        },
+        deleteGuest: function(guest) {
+            this.trashList.splice(this.trashList.indexOf(guest), 1)
+        },
         changeStatus: function() {
             return true
         },
     }, // methods
     computed: {
-        sortGuestList: function() {
-            return this.guestList.sort()
+        sortInvitedList: function() {
+            return this.invitedList.sort()
         }
     }
 })
