@@ -15,7 +15,9 @@ body {
 }
 
 .jumbotron .jumbotron-title {
-  color: #00dd00;
+  font-size: 100px;
+  /* color: #00dd00; */
+  color: #00aa00;
 }
 
 .jumbotron .jumbotron-family {
@@ -32,4 +34,46 @@ body {
 
 .introducao .intro-family {
   width: 90%;
+}
+
+.servicos {
+  padding-top: 90px;
+  padding-bottom: 90px;
+  background-color: #00aa00;
+  background: url(../design/grass.jpg) no-repeat center;
+}
+
+.servicos button {
+  /* color: #00dd00; */
+  color: #00aa00;
+  font-size: 40px;
+  width: 300px;
+  height: 80px;
+  background-color: #ffffff;
+  border-radius: 30px;
+}
+
+.contato {
+  margin-top: 20px;
+}
+
+.contato .contato-header {
+  font-size: 40px;
+}
+.contato .contato-input {
+  border-radius: 20px;
+  width: 300px;
+  padding-left: 10px;
+}
+
+.contato input {
+  margin-bottom: 10px;
+}
+
+.contato .contato-input-text {
+  border-radius: 20px;
+  width: 300px;
+  height: 200px;
+  text-align: justify;
+  padding-left: 10px;
 }
