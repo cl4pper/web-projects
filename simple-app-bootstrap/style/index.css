@@ -10,10 +10,26 @@ body {
 .jumbotron {
   background: url(../design/jumbotron.jpg) no-repeat center;
   color: #ffffff;
-  height: 500px;
+  height: 550px;
   overflow: none;
 }
 
-.jumbotron-title {
+.jumbotron .jumbotron-title {
   color: #00dd00;
+}
+
+.jumbotron .jumbotron-family {
+  /* width: 90%; */
+}
+
+.introducao .header {
+  font-size: 30px;
+}
+
+.introducao .intro-text {
+  text-align: justify;
+}
+
+.introducao .intro-family {
+  width: 90%;
 }
