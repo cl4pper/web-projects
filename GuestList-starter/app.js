@@ -1,5 +1,42 @@
-new Vue({
-    el: '#app',
+var Top = new Vue ({
+  el:'#top',
+  data: {
+    appName: "Guests List",
+    links: [
+      { name: "Facebook", id: 1, url:"https://www.facebook.com"},
+      { name: "Gmail", id: 2, url:"https://www.gmail.com" },
+      { name: "Hotmail", id: 3, url:"https://www.hotmail.com" },
+    ],
+    data: "0/0/0",
+  },
+  computed: {
+    actualDate: function() {
+      var date = new Date()
+      // Dia
+      if(date.getDate() < 10) {
+        var dd = "0" + date.getDate()
+      } else {
+        var dd = date.getDate()
+      }
+      // Mes
+      if(date.getMonth() < 10) {
+        var mm = "0" + (date.getMonth() + 1)
+      } else {
+        var mm = date.getMonth() + 1
+      }
+      var yy = date.getFullYear()
+      return (dd + "/" + mm +"/" + yy)
+    },
+  },
+  methods: {
+    changeTitle: function() {
+      this.$refs.title.innerText = "Title changed"
+    }
+  }
+});
+
+var List = new Vue ({
+    el: '#list',
     data: {
         actualEvent: {
             eventDate: "April 23th - 24th",

@@ -12,14 +12,27 @@
 </head>
 <body>
 
-  <div id="app">
-    <div class="container">
-
-      <div class="row">
-        <div class="col-sm-12 text-center">
-          <h1>Guest List</h1>
-        </div>
+  <div id="top">
+    <div class="row">
+      <div class="col-sm-12 text-center">
+        <h1 ref="title">Guest List</h1>
+        <h5>{{ actualDate }}</h5>
       </div>
+    </div>
+    <div class="container">
+      <hr />
+      <ul class="nav">
+        <div v-for="link in links" :key="link.id">
+          <li class="nav-item"><a class="nav-link" :href="link.url">{{ link.name }}</a></li>
+        </div>
+        <input type="button" class="btn btn-success" value="Change Title" @click="changeTitle"/>
+      </ul>
+      <hr />
+    </div>
+  </div>
+
+  <div id="list">
+    <div class="container">
 
       <div class="row">
         <div class="col-sm-12">
@@ -82,7 +95,7 @@
 
       <div class="row">
         <!-- Lista de inscritos no evento -->
-        <div class="col-sm-5">
+        <div class="col-sm-4">
           <div class="card">
             <div class="card-header" :class="submittedClass">
               <div v-if="(invitedList.length == 0) || (eventCapacity == 0)">Invited ({{ getLength(invitedList) }})</div>
@@ -94,7 +107,7 @@
             </div>
             <div class="card-block">
               <div>
-                <h4 v-if="invitedList.length === 0">No names added yet...</h4>
+                <div v-if="invitedList.length === 0"><h4>No names added yet...</h4></div>
                 <div v-else :class="guestButton" v-for="(guest, index) in sortInvitedList" :key="guest">
                     <span @click="moveToAttendence( guest )">{{ index + 1 }}. {{ guest }}</span> <span @click="moveToTrash(guest, 0)">X</span>
                 </div>
@@ -103,7 +116,7 @@
           </div>
         </div>
         <!-- Lista dos que chegaram no evento -->
-        <div class="col-sm-5">
+        <div class="col-sm-4">
           <div class="card">
             <div class="card-header" :class="submittedClass">
               <div v-if="(attendingList.length == 0) || (eventCapacity == 0)">Attending ({{ getLength(attendingList) }})</div>
@@ -114,7 +127,7 @@
             </div>
             <div class="card-block">
               <div>
-                <h4 v-if="attendingList.length === 0">No names added yet...</h4>
+                <div v-if="attendingList.length === 0"><h4>No names added yet...</h4></div>
                 <div v-else :class="guestButton" v-for="(guest, index) in attendingList" :key="guest">
                     <span @click="moveToAttendence( guest )">{{ index + 1 }}. {{ guest }}</span> <span @click="moveToTrash(guest, 1)">X</span>
                 </div>
@@ -123,15 +136,9 @@
           </div>
         </div>
         <!-- Lista de pessoas para serem excluidas -->
-        <div class="col-sm-2">
+        <div class="col-sm-3 offset-md-1">
           <div class="card">
-            <div class="card-header" :class="submittedClass">
-              <div v-if="">Trash</div>
-              <div v-else>
-                  <p>Trash</p>
-                  <progress :style="{ width: (( getLength( attendingList ) / eventCapacity ) * 100) + '%' }"></progress>
-              </div>
-            </div>
+            <div class="card-header" :class="submittedClass">Trash</div>
             <div class="card-block">
               <div>
                 <h4 v-if="trashList.length === 0">...</h4>
