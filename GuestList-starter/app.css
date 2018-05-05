@@ -11,6 +11,10 @@
   margin-top: 25px;
 }
 
+.nav-item {
+  cursor: pointer;
+}
+
 .name-box {
   padding: 10px;
   margin: 10px;

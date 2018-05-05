@@ -15,7 +15,7 @@
   <div id="top">
     <div class="row">
       <div class="col-sm-12 text-center">
-        <h1 ref="title">Guest List</h1>
+        <h1>Guest List</h1>
         <h5>{{ actualDate }}</h5>
       </div>
     </div>
@@ -38,10 +38,26 @@
         <div class="col-sm-12">
           <div class="card">
             <div class="card-header" :class="submittedClass">
-              Date
-            </div>
-            <div class="card-block">
-              <!-- <h4 class="card-title" v-text="actualEvent.eventTitle">{{ backupEventTitle }}</h4><hr> -->
+              <ul class="nav justify-content-end">
+                {{ actualDate }}
+                <!-- Botao para confirmar alteracao na data -->
+                <li v-if="confirmDay === false
+                 || confirmMonth === false
+                 || confirmYear === false"><span class="mr-4 btn btn-primary" style="fontSize: 20px" @click="confirmDate">OK</span></li>
+
+                <!-- Apresentacao do Dia -->
+                <li v-if="confirmDay === true" class="nav-item mr-2" :style="navItem" @click="changeDay">{{ dd }}</li>
+                <li v-else class="nav-item mr-2" :style="navItem"><input style="width: 55px" type="number" v-model="day"/></li>
+
+                <!-- Apresentacao do Mes -->
+                <li v-if="confirmMonth === true" class="nav-item mr-2" :style="navItem" @click="changeMonth">{{ mm }}</li>
+                <li v-else class="nav-item mr-2" :style="navItem"><input style="width: 55px" type="number" v-model="mon"/></li>
+
+                <!-- Apresentacao do Ano -->
+                <li v-if="confirmYear === true" class="nav-item mr-2" :style="navItem" @click="changeYear">{{ yy }}</li>
+                <li v-else class="nav-item mr-2" :style="navItem"><input style="width: 80px" type="number" v-model="yea"/></li>
+              </ul>
+              <hr />
               <!-- Adicionar titulo do evento. -->
               <div class="card-title">
                   <div v-if="confirmTitle === false">
@@ -54,6 +70,9 @@
                       <h3 @click="confirmTitle = false">{{ title[0].toUpperCase() + title.slice(1) }}</h3>
                   </div>
               </div>
+            </div>
+            <div class="card-block">
+              <!-- <h4 class="card-title" v-text="actualEvent.eventTitle">{{ backupEventTitle }}</h4><hr> -->
 
               <!-- Adicionar descricao do evento. -->
               <div v-if="confirmDescription === false">
@@ -94,6 +113,7 @@
       </div>
 
       <div class="row">
+
         <!-- Lista de inscritos no evento -->
         <div class="col-sm-4">
           <div class="card">
@@ -115,6 +135,7 @@
             </div>
           </div>
         </div>
+
         <!-- Lista dos que chegaram no evento -->
         <div class="col-sm-4">
           <div class="card">
@@ -135,6 +156,7 @@
             </div>
           </div>
         </div>
+
         <!-- Lista de pessoas para serem excluidas -->
         <div class="col-sm-3 offset-md-1">
           <div class="card">
@@ -142,7 +164,7 @@
             <div class="card-block">
               <div>
                 <h4 v-if="trashList.length === 0">...</h4>
-                <div v-else :class="guestButton" @click="deleteGuest" v-for="guest in trashList" :key="oneGuest">
+                <div v-else :class="guestButton" @click="deleteGuest" v-for="guest in trashList" :key="guest">
                     {{ guest }}
                 </div>
               </div>

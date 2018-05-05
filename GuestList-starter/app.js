@@ -30,7 +30,8 @@ var Top = new Vue ({
   },
   methods: {
     changeTitle: function() {
-      this.$refs.title.innerText = "Title changed"
+      // this.$refs.title.innerText = "Title changed"
+      // this.$refs.title.hide
     }
   }
 });
@@ -44,6 +45,7 @@ var List = new Vue ({
             eventDescript: "As the event's name says...",
         },
         backupEventTitle: "Event Title",
+        date:"",
         confirmTitle: false,
         eventTitle: "",
         title: "",
@@ -65,7 +67,20 @@ var List = new Vue ({
         buttonStyle: {
             width: "70px",
         },
+        navItem: {
+          fontSize: "25px",
+        },
         guestButton: "card-success rounded name-box pointerCursor",
+        dd: "",
+        mm: "",
+        yy: "",
+        meses: ["Janeiro", "Fevereiro", "Marco", "Abril", "Maio", "Junho", "Julho", "Agosto", "Setembro", "Outubro", "Novembro", "Dezembro"],
+        confirmDay: true,
+        confirmMonth: true,
+        confirmYear: true,
+        day: this.dd,
+        mon: this.mm,
+        yea: this.yy,
     },
     methods: {
         submitForm: function() {
@@ -143,10 +158,75 @@ var List = new Vue ({
         changeStatus: function() {
             return true
         },
+        changeDay: function() {
+          // alert("Change Day")
+          this.confirmDay = false
+        },
+        changeMonth: function() {
+          // alert("Change Month")
+          this.confirmMonth = false
+        },
+        changeYear: function() {
+          // alert("Change Year")
+          this.confirmYear = false
+        },
+        confirmDate: function() {
+          var date = new Date()
+          // usado para dias
+          if(this.confirmDay === false) {
+            if(this.day > 31) {
+              alert("Maximum days in a month: 31")
+            } else if (typeof(this.day) === "undefined") {
+              this.dd = this.dd
+              this.confirmDay = true
+            } else {
+              this.dd = this.day
+              this.confirmDay = true
+            }
+          // usado para meses
+          } else if (this.confirmMonth === false) {
+            if(this.mon > 12) {
+              this.mm = this.mm = this.meses[11]
+              this.confirmMonth = true
+            } else if (typeof(this.mon) === "undefined" ) {
+              this.mm = this.mm
+              this.confirmMonth = true
+            } else {
+              this.mm = this.meses[this.mon - 1]
+              this.confirmMonth = true
+            }
+          // usado para anos
+          } else {
+            if(typeof(this.yea) === "undefined") {
+              this.yy = this.yy
+              this.confirmYear = true
+            } else if (this.yea < date.getFullYear()) {
+              this.yy = this.yy
+              this.confirmYear = true
+            } else {
+              this.yy = this.yea
+              this.confirmYear = true
+            }
+          }
+        },
     }, // methods
     computed: {
         sortInvitedList: function() {
             return this.invitedList.sort()
-        }
-    }
+        },
+        actualDate: function() {
+          var date = new Date()
+          // Dia
+          if(date.getDate() < 10) {
+            this.dd = "0" + date.getDate()
+          } else {
+            this.dd = date.getDate()
+          }
+          // Mes
+          this.mm = this.meses[date.getMonth()]
+          this.yy = date.getFullYear()
+          // return (this.dd + " de " + this.mm +" de " + this.yy)
+          // this.date = dd + "/" + mm +"/" + yy
+        },
+    },
 })
