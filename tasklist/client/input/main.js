@@ -5,7 +5,8 @@ Template.input.events({
     var newTask = $("#newTask");
     var name = newTask.val();
 
-    Tasks.insert({name: name, date: new Date()});
+    // Tasks.insert({name: name, date: new Date()});
+    Meteor.call("adiciona", { name: name });
     newTask.val("");
   }
 });

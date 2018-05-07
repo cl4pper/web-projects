@@ -21,7 +21,7 @@ Template.list.helpers({
 Template.list.events({
   "click button": function(e, template) {
     var task = this;
-
     Tasks.remove({_id: task._id});
+    // Meteor.call("remove", {_id: task._id});
   }
 })
