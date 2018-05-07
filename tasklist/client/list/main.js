@@ -17,3 +17,11 @@ Template.list.helpers({
     return moment(this.date).format('DD/MM/YY HH:mm');
   }
 });
+
+Template.list.events({
+  "click button": function(e, template) {
+    var task = this;
+
+    Tasks.remove({_id: task._id});
+  }
+})
