@@ -1,9 +1,18 @@
 <template name="list">
 
-  <ul>
-    {{ #each tasks}}
-    <li>{{ name }}</li>
-    {{/each}}
-  </ul>
+  <div class="row">
+    <div class="col-xs-12">
+      {{#each tasks}}
+      <div class="row" style="margin-bottom: 10px">
+        <div class="col-xs-11">
+          {{name}} - {{formatDate}}
+        </div>
+        <div class="col-xs-1">
+          <button class="btn btn-danger">Remove</button>
+        </div>
+      </div>
+      {{/each}}
+    </div>
+  </div>
 
 </template>
