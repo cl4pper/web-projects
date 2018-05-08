@@ -179,6 +179,10 @@ var List = new Vue ({
             } else if (typeof(this.day) === "undefined") {
               this.dd = this.dd
               this.confirmDay = true
+            } else if (this.day < 0) {
+              // this.dd = this.dd
+              // this.confirmDay = true
+              alert("Dia incorreto!")
             } else {
               this.dd = this.day
               this.confirmDay = true
@@ -187,10 +191,15 @@ var List = new Vue ({
           } else if (this.confirmMonth === false) {
             if(this.mon > 12) {
               this.mm = this.mm = this.meses[11]
+              alert("Máximo de meses permitido: 12")
               this.confirmMonth = true
             } else if (typeof(this.mon) === "undefined" ) {
               this.mm = this.mm
               this.confirmMonth = true
+            } else if(this.mon < 0) {
+              // this.mm = this.mm
+              // this.confirmMonth
+              alert("Mes incorreto!")
             } else {
               this.mm = this.meses[this.mon - 1]
               this.confirmMonth = true

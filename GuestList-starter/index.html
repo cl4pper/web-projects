@@ -47,11 +47,11 @@
 
                 <!-- Apresentacao do Dia -->
                 <li v-if="confirmDay === true" class="nav-item mr-2" :style="navItem" @click="changeDay">{{ dd }}</li>
-                <li v-else class="nav-item mr-2" :style="navItem"><input style="width: 55px" type="number" v-model="day"/></li>
+                <li v-else class="nav-item mr-2" :style="navItem"><input style="width: 65px" type="number" v-model="day"/></li>
 
                 <!-- Apresentacao do Mes -->
                 <li v-if="confirmMonth === true" class="nav-item mr-2" :style="navItem" @click="changeMonth">{{ mm }}</li>
-                <li v-else class="nav-item mr-2" :style="navItem"><input style="width: 55px" type="number" v-model="mon"/></li>
+                <li v-else class="nav-item mr-2" :style="navItem"><input style="width: 65px" type="number" v-model="mon"/></li>
 
                 <!-- Apresentacao do Ano -->
                 <li v-if="confirmYear === true" class="nav-item mr-2" :style="navItem" @click="changeYear">{{ yy }}</li>
@@ -127,7 +127,7 @@
             </div>
             <div class="card-block">
               <div>
-                <div v-if="invitedList.length === 0"><h4>No names added yet...</h4></div>
+                <div v-if="invitedList.length === 0"><h5>No names added yet...</h5></div>
                 <div v-else :class="guestButton" v-for="(guest, index) in sortInvitedList" :key="guest">
                     <span @click="moveToAttendence( guest )">{{ index + 1 }}. {{ guest }}</span> <span @click="moveToTrash(guest, 0)">X</span>
                 </div>
@@ -148,7 +148,7 @@
             </div>
             <div class="card-block">
               <div>
-                <div v-if="attendingList.length === 0"><h4>No names added yet...</h4></div>
+                <div v-if="attendingList.length === 0"><h5>No names added yet...</h5></div>
                 <div v-else :class="guestButton" v-for="(guest, index) in attendingList" :key="guest">
                     <span @click="moveToAttendence( guest )">{{ index + 1 }}. {{ guest }}</span> <span @click="moveToTrash(guest, 1)">X</span>
                 </div>
@@ -163,7 +163,7 @@
             <div class="card-header" :class="submittedClass">Trash</div>
             <div class="card-block">
               <div>
-                <h4 v-if="trashList.length === 0">...</h4>
+                <h5 v-if="trashList.length === 0">No names added yet...</h5>
                 <div v-else :class="guestButton" @click="deleteGuest" v-for="guest in trashList" :key="guest">
                     {{ guest }}
                 </div>
