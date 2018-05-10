@@ -1,7 +1,7 @@
 <template>
   <div class="row">
     <div class="col-sm-6 card edit-area">
-      <p>Front</p>
+      <p>Right</p>
     </div>
     <div class="col-sm-6 card card-display">
 
@@ -25,7 +25,6 @@
   padding: 20px;
   height: 500px;
 }
-
 .card-display {
   height: 500px;
   padding: 20px;

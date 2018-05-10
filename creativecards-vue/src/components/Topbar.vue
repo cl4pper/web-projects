@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="header-body">
     <h1 class="text-center">Creative Cards</h1>
     <ul class="nav justify-content-center">
       <li class="nav-item" @click="changeToFront">Front</li>
@@ -14,31 +14,41 @@
 export default {
   data: function() {
     return {
-      pageSelected: "",
+      pageSelected: "Front",
     }
   },
   methods: {
     changeToFront: function() {
-      this.pageSelected = "front"
-      console.log(this.pageSelected)
+      this.pageSelected = "Cardfront"
+      // console.log(this.pageSelected)
     },
     changeToBack: function() {
-      this.pageSelected = "back"
-      console.log(this.pageSelected)
+      this.pageSelected = "Cardback"
+      // console.log(this.pageSelected)
     },
     changeToRight: function() {
-      this.pageSelected = "right"
-      console.log(this.pageSelected)
+      this.pageSelected = "Cardright"
+      // console.log(this.pageSelected)
     },
     changeToLeft: function() {
-      this.pageSelected = "left"
-      console.log(this.pageSelected)
+      this.pageSelected = "Cardleft"
+      // console.log(this.pageSelected)
     },
+  },
+  watch: {
+    pageSelected: function() {
+      // console.log(this.pageSelected)
+      this.$emit('pageWasChanged', this.pageSelected)
+    }
   }
 }
 </script>
 
 <style>
+.header-body {
+  margin: 20px 0;
+}
+
 h1 {
   margin-top: 20px;
 }
@@ -49,6 +59,7 @@ h1 {
 }
 .nav-item:hover {
   /* font-size: 20px; */
-  color: #ff00ff;
+  /* color: #ff00ff; */
+  color: #d2f9f9;
 }
 </style>
