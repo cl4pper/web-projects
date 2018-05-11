@@ -22,7 +22,7 @@ Then, install each one of the required packages(VUE.JS, METEOR, etc.)
 
 
 TO CREATE A VUE.JS project:
-1. vue init webpack PROJECT_NAME
+1. vue init webpack-simple PROJECT_NAME
 REF: https://github.com/vuejs/vue-cli
 
 TO CREATE A METEOR project:
