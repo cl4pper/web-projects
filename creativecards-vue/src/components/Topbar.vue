@@ -44,22 +44,6 @@ export default {
 }
 </script>
 
-<style>
-.header-body {
-  margin: 20px 0;
-}
-
-h1 {
-  margin-top: 20px;
-}
-.nav-item {
-  margin-left: 10px;
-  margin-right: 10px;
-  cursor: pointer;
-}
-.nav-item:hover {
-  /* font-size: 20px; */
-  /* color: #ff00ff; */
-  color: #d2f9f9;
-}
+<style lang="scss">
+@import '../assets/scss/topbar';
 </style>
