@@ -23,7 +23,5 @@ export default {
 </script>
 
 <style>
-.title {
-  text-align: center;
-}
+@import '../assets/scss/header';
 </style>

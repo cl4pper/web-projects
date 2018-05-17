@@ -12,6 +12,10 @@ div(class="container")
           button(class="btn btn-success" @click="getName") Add
 
     div(class="col-md-4")
+
+  ul
+    li(v-for="item in lista") {{ item.name }} - {{ item.age }}
+
   hr
 </template>
 
@@ -24,6 +28,10 @@ export default {
       addedName: "",
       age: "",
       addedAge: "",
+      person: {
+        name: "",
+        age: "",
+      },
       lista: [],
     }
   },
@@ -34,24 +42,24 @@ export default {
       } else {
         this.name = this.addedName
         // alert("Name " + this.name + " added.")
-        this.lista.push(this.name)
+        this.person = { name: this.name, age: "10"}
+        this.lista.push(this.person)
         this.addedName = ""
-        console.log(this.lista)
       }
     },
     getAge: function() {
       this.age = this.addedAge
     },
+  },
+  watch: {
+    lista: function() {
+      alert("Lista changed.")
+      // this.$emit('listChanged', this.lista)
+    }
   }
 }
 </script>
 
-<style>
-.container {
-  margin-top: 30px;
-}
-
-.form {
-  text-align: center;
-}
+<style lang="scss">
+@import '../assets/scss/input';
 </style>
