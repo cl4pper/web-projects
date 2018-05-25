@@ -6,7 +6,9 @@
         <p v-if="currentPage === null"></p>
         <!-- <p v-else>{{ currentPage }</p> -->
         <!-- <Cardfront></Cardfront> -->
-        <component :is="currentPage"></component>
+        <keep-alive>
+          <component :is="currentPage"></component>
+        </keep-alive>
       </div>
     </div>
   </div>

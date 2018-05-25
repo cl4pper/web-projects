@@ -5,11 +5,16 @@ div(class="container")
 
     div(class="col-md-4")
       div(class="form")
-        div(class="input-group mb-3")
-          div(class="input-group-prepend")
-            span(class="input-group-text") Name
-          input(type="text" class="form-control" v-model="addedName")
-          button(class="btn btn-success" @click="getName") Add
+        div(class="row")
+          div(class="input-group mb-3")
+            div(class="input-group-prepend")
+              span(class="input-group-text") Name
+            input(type="text" class="form-control" v-model="addedName")
+          div(class="input-group mb-3")
+            div(class="input-group-prepend")
+              span(class="input-group-text") Descr
+            input(type="text" class="form-control" v-model="addedDescr")
+        button(class="btn btn-success") Add
 
     div(class="col-md-4")
 
@@ -26,8 +31,8 @@ export default {
     return {
       name: "",
       addedName: "",
-      age: "",
-      addedAge: "",
+      descr: "",
+      addedDescr: "",
       person: {
         name: "",
         age: "",
@@ -47,8 +52,8 @@ export default {
         this.addedName = ""
       }
     },
-    getAge: function() {
-      this.age = this.addedAge
+    getDescr: function() {
+      this.descr = this.addedDescr
     },
   },
   watch: {

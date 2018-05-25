@@ -5,7 +5,13 @@ div(class="major")
 
 <script>
 export default {
-  props: ['displayText']
+  props: {
+    displayText: [String],
+    containerHeight: {
+      type: Number,
+      required: false,
+    }
+  }
 }
 </script>
 
