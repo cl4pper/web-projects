@@ -6,8 +6,8 @@ div(class="row")
     Textinput(@textAreaDisplay="textBoxSecond = $event")
 
   div(class="col-sm-6 card card-display")
-    Textoutput(:displayText="textBoxFirst")
-    Textoutput(:displayText="textBoxSecond")
+    Textoutput(:displayText="textBoxFirst" :containerHeight="150")
+    Textoutput(:displayText="textBoxSecond" :containerHeight="150")
 </template>
 
 <script>

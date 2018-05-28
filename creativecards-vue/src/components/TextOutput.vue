@@ -1,6 +1,7 @@
 <template lang="pug">
 div(class="major")
-  p {{ displayText }}
+  p(:style="contHeightStyle")
+    span(class="out") {{ displayText }}
 </template>
 
 <script>
@@ -9,7 +10,15 @@ export default {
     displayText: [String],
     containerHeight: {
       type: Number,
-      required: false,
+      // default: 50,
+      required: true,
+    }
+  },
+  computed: {
+    contHeightStyle: function() {
+      return {
+        height: this.containerHeight + "px"
+      }
     }
   }
 }

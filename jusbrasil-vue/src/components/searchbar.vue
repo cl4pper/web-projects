@@ -4,8 +4,8 @@ div(class="container")
   div(class="input-group mb-3")
     div(class="input-group-prepend")
       span(class="input-group-text") Search
-    input(class="form-control" placeholder="Search")
-  Button(buttonText="Search")
+    input(class="form-control")
+  Button(buttonText="...and destroy.")
 </template>
 
 <script>
@@ -22,7 +22,7 @@ export default {
   components: {
     Title: Title,
     Button: Button,
-  }
+  },
 }
 </script>
 

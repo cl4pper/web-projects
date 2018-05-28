@@ -1,15 +1,18 @@
 <template lang="pug">
 div(class="header-body")
-  h1(class="text-center") Creative Cards
-  ul(class="nav justify-content-center")
-    li(class="nav-item" @click="changeToFront")
-      a Front
-    li(class="nav-item" @click="changeToBack")
-      a Back
-    li(class="nav-item" @click="changeToRight")
-      a Right
-    li(class="nav-item" @click="changeToLeft")
-      a Left
+  div
+    h1(class="text-center") Creative Cards
+    ul(class="nav justify-content-center")
+      li(class="nav-item" @click="changeToFront")
+        a Front
+      li(class="nav-item" @click="changeToBack")
+        a Back
+      li(class="nav-item" @click="changeToRight")
+        a Right
+      li(class="nav-item" @click="changeToLeft")
+        a Left
+  div
+    slot
 </template>
 
 <script>

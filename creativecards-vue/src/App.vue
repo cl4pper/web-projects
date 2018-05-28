@@ -6,16 +6,20 @@
         <p v-if="currentPage === null"></p>
         <!-- <p v-else>{{ currentPage }</p> -->
         <!-- <Cardfront></Cardfront> -->
-        <keep-alive>
-          <component :is="currentPage"></component>
-        </keep-alive>
       </div>
     </div>
+    <Footer>
+      <keep-alive>
+        <!-- component - indica a utilizacao de um componente especifico(determinado pelo is) -->
+        <component :is="currentPage"></component>
+      </keep-alive>
+    </Footer>
   </div>
 </template>
 
 <script>
 import Topbar from './components/Topbar.vue'
+import Footer from './components/Footer.vue'
 import Cardfront from './components/card/Cardfront.vue'
 import Cardleft from './components/card/Cardleft.vue'
 import Cardright from './components/card/Cardright.vue'
@@ -32,7 +36,8 @@ export default {
     Cardfront: Cardfront,
     Cardleft: Cardleft,
     Cardright: Cardright,
-    Cardback: Cardback
+    Cardback: Cardback,
+    Footer: Footer,
   }
 }
 </script>
