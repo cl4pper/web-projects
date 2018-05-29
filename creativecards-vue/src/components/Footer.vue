@@ -1,6 +1,7 @@
 <template lang="pug">
 div(class="container")
   slot
+    p Footer
 </template>
 
 <script>

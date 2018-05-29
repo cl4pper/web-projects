@@ -4,6 +4,7 @@ div(class="row")
     p Front
     Textinput(@textAreaDisplay="textBoxFirst = $event")
     Textinput(@textAreaDisplay="textBoxSecond = $event")
+    ImageUploader
 
   div(class="col-sm-6 card card-display")
     Textoutput(:displayText="textBoxFirst" :containerHeight="150")
@@ -11,8 +12,9 @@ div(class="row")
 </template>
 
 <script>
-import TextInput from '../TextInput.vue';
-import TextOutput from '../TextOutput.vue';
+import TextInput from '../TextInput.vue'
+import TextOutput from '../TextOutput.vue'
+import ImageUploader from './ImageUploader.vue'
 
 export default {
   data() {
@@ -23,7 +25,8 @@ export default {
   },
   components: {
     Textinput: TextInput,
-    Textoutput: TextOutput
+    Textoutput: TextOutput,
+    ImageUploader: ImageUploader,
   }
 }
 </script>

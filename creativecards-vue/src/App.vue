@@ -18,6 +18,7 @@
 </template>
 
 <script>
+import FirebaseConfig from './firebaseConfig.js'
 import Topbar from './components/Topbar.vue'
 import Footer from './components/Footer.vue'
 import Cardfront from './components/card/Cardfront.vue'
