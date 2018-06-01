@@ -2,12 +2,12 @@
 div(class="row")
   div(class="col-sm-6 card edit-area")
     p Front
-    Textinput(@textAreaDisplay="textBoxFirst = $event")
+    Textinput(@textAreaDisplay="textBoxFirst = $event" title="Title")
     Textinput(@textAreaDisplay="textBoxSecond = $event")
     ImageUploader
 
   div(class="col-sm-6 card card-display")
-    Textoutput(:displayText="textBoxFirst" :containerHeight="150")
+    Textoutput(:displayText="textBoxFirst" :containerHeight="50")
     Textoutput(:displayText="textBoxSecond" :containerHeight="150")
 </template>
 

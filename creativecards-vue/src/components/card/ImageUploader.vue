@@ -4,9 +4,10 @@ div(class="row")
         h5 Uploade Image:
         div(class="form-group")
             input(type="file" class="form-control-file" id="fileUpload" @change="uploadFile")
-        br
-        img(id="image")
-        button(class="btn btn-dark" id="setImageButton") Set Image
+        div
+            img(id="image")
+        div
+            button(id="setImageButton") Set Image
 </template>
 
 <script>
@@ -26,17 +27,19 @@ export default {
             // ref('VAR_NAME')
             var storageRef = Firebase.storage().ref('user_uploads/' + this.file.name)
             storageRef.put(this.file)
+
+            // preview da imagem
+            var reader = new FileReader()
+            reader.readAsDataURL(this.file)
+
+            reader.onload = function(event) {
+                document.getElementById('image').src = event.target.result
+            }
         }
     }
 }
 </script>
 
-<style>
-.row {
-    /* margin: 20px 0; */
-}
-button {
-    height: 35px;
-    width: 100px;
-}
+<style lang="scss">
+@import '../../assets/scss/image';
 </style>
