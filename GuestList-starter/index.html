@@ -61,6 +61,7 @@
               <!-- Adicionar titulo do evento. -->
               <div class="card-title">
                   <div v-if="confirmTitle === false">
+                      <p class="card-text">Add guests to the list:</p>
                       <form class="form-inline" @submit.prevent="submitTitle">
                           <input type="text" class="form-control mb-2 mr-sm-2 mb-sm-0" placeholder="Event Title" v-model="eventTitle" />
                           <input type="submit" class="btn btn-primary" :style="buttonStyle" value="OK" />
@@ -76,8 +77,10 @@
 
               <!-- Adicionar descricao do evento. -->
               <div v-if="confirmDescription === false">
+                  <p class="card-text">Event description:</p>
+
                   <form class="form-inline" @submit.prevent="submitDescription">
-                      <input type="text" class="form-control mb-2 mr-sm-2 mb-sm-0" placeholder="Event Description" v-model="eventDsc" />
+                      <input type="text" class="form-control mb-2 mr-sm-2 mb-sm-0" placeholder="" v-model="eventDsc" />
                       <input type="submit" class="btn btn-primary" :style="buttonStyle" value="OK" />
                   </form>
               </div>
@@ -89,18 +92,20 @@
 
               <!-- Definir quantidade maxima de convidados. -->
               <div v-if="confirmCapacity === false">
+                  <p class="card-text">Maximum of guests allowed:</p>
+
                   <form class="form-inline">
                       <input type="number" class="form-control mb-2 mr-sm-2 mb-sm-0" placeholder="Total Guests" v-model="eventCapacity" />
                       <input @click="submitCapacity" class="btn btn-primary" :style="buttonStyle" value="OK" />
                   </form>
               </div>
               <div v-else>
-                  <p>Maximum of guests allowed: <h2 @click="confirmCapacity = false">{{ eventCapacity }}</h2></p>
+                  <p>Maximum guests allowed: <h2 @click="confirmCapacity = false">{{ eventCapacity }}</h2></p>
               </div>
 
               <br />
 
-              <p class="card-text">Add your name to the guest list for exclusive offers:</p>
+              <p class="card-text">Add guests to the list:</p>
 
               <form class="form-inline" @submit.prevent="submitForm">
                 <input type="text" id="nameInput" class="form-control mb-2 mr-sm-2 mb-sm-0" placeholder="Guest Name" v-model="name">
@@ -129,7 +134,7 @@
               <div>
                 <div v-if="invitedList.length === 0"><h5>No names added yet...</h5></div>
                 <div v-else :class="guestButton" v-for="(guest, index) in sortInvitedList" :key="guest">
-                    <span @click="moveToAttendence( guest )">{{ index + 1 }}. {{ guest }}</span> <span @click="moveToTrash(guest, 0)">X</span>
+                    <span @click="moveToAttendence( guest )">{{ index + 1 }}. {{ guest }}</span> <span class="delete" @click="moveToTrash(guest, 0)">X</span>
                 </div>
               </div>
             </div>
@@ -150,7 +155,7 @@
               <div>
                 <div v-if="attendingList.length === 0"><h5>No names added yet...</h5></div>
                 <div v-else :class="guestButton" v-for="(guest, index) in attendingList" :key="guest">
-                    <span @click="moveToAttendence( guest )">{{ index + 1 }}. {{ guest }}</span> <span @click="moveToTrash(guest, 1)">X</span>
+                    <span @click="moveToAttendence( guest )">{{ index + 1 }}. {{ guest }}</span> <span class="delete" @click="moveToTrash(guest, 1)">X</span>
                 </div>
               </div>
             </div>
@@ -165,7 +170,7 @@
               <div>
                 <h5 v-if="trashList.length === 0">No names added yet...</h5>
                 <div v-else :class="guestButton" @click="deleteGuest" v-for="guest in trashList" :key="guest">
-                    {{ guest }}
+                    <span style="color:red">{{ guest }}</span>
                 </div>
               </div>
             </div>
