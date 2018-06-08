@@ -2,6 +2,8 @@ var Top = new Vue ({
   el:'#top',
   data: {
     appName: "Guests List",
+    topTitle: "Guest List",
+    confirmTitle: false,
     links: [
       { name: "Facebook", id: 1, url:"https://www.facebook.com"},
       { name: "Gmail", id: 2, url:"https://www.gmail.com" },
@@ -30,9 +32,13 @@ var Top = new Vue ({
   },
   methods: {
     changeTitle: function() {
-      // this.$refs.title.innerText = "Title changed"
-      // this.$refs.title.hide
+      this.confirmTitle = true
     }
+  },
+  watcher: {
+      confirmTitle: function() {
+          alert("To change title!")
+      },
   }
 });
 
