@@ -4,12 +4,12 @@ div(class="row")
     p Front
     Textinput(@textAreaDisplay="textBoxFirst = $event" title="Title")
     Textinput(@textAreaDisplay="textBoxSecond = $event")
-    ImageUploader
+    ImageUploader(@displayImageChanged="imageName = $event")
 
   div(class="col-sm-6 card card-display")
     Textoutput(:displayText="textBoxFirst" :containerHeight="50")
     Textoutput(:displayText="textBoxSecond" :containerHeight="150")
-    ImageOutput(:displayImage="imageName")
+    ImageOutput(:displayImage="imageName" :containerHeight="300")
 </template>
 
 <script>
@@ -23,6 +23,8 @@ export default {
     return {
       textBoxFirst: "",
       textBoxSecond: "",
+      imageName: "",
+      name: this.imageName,
     }
   },
   components: {
