@@ -11,7 +11,7 @@ div(class="row")
         div
             img(id="image")
         div
-            button(id="setImageButton") Set Image
+            button(id="setImageButton" style="display: none" @click="setImage") Set Image
 </template>
 
 <script>
@@ -27,6 +27,10 @@ export default {
     },
     methods: {
         uploadFile: function(event) {
+
+            // faz o botao desaparecer no carregamento de uma nova imagem
+            document.getElementById('setImageButton').style.display = 'none'
+
             console.log(event)
             this.existImg = true
             this.file = event.target.files[0]
@@ -46,8 +50,13 @@ export default {
             upload.on('state_changed', function(snapshot) {
                 var progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
                 document.getElementById("progressBar").value = progress
-            })
 
+                if(progress === 100) {
+                    document.getElementById('setImageButton').style.display = 'inline-block'
+                }
+            })
+        },
+        setImage: function() {
             // envia o nome da imagem para outro component
             this.$emit('displayImageChanged', this.file.name)
         }

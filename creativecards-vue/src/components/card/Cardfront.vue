@@ -10,6 +10,7 @@ div(class="row")
     Textoutput(:displayText="textBoxFirst" :containerHeight="50")
     Textoutput(:displayText="textBoxSecond" :containerHeight="150")
     ImageOutput(:displayImage="imageName" :containerHeight="300")
+    p {{ imageName }}
 </template>
 
 <script>

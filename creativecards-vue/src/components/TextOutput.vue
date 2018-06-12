@@ -1,6 +1,8 @@
 <template lang="pug">
 div(class="major")
-  p(:style="contHeightStyle")
+    p(@mouseover="mouseOver" v-show="!active") Boooom
+    p(@mouseleave="mouseOut" v-show="active") Nada
+    p(:style="contHeightStyle")
     span(class="out") {{ displayText }}
 </template>
 
@@ -13,6 +15,19 @@ export default {
       // default: 50,
       required: true,
     }
+  },
+  data() {
+      return {
+          active: false
+      }
+  },
+  methods: {
+      mouseOver: function() {
+          this.active = true
+      },
+      mouseOut: function() {
+          this.active = false
+      }
   },
   computed: {
     contHeightStyle: function() {
