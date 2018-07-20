@@ -1,0 +1,29 @@
+// STYLESHEET FOR JUMBOTRON
+
+// IMPORTS COLORS
+@import '../../assets/style/colors.scss';
+
+.jumbotron {
+  width: 100%;
+  // margin-top: 3em;
+  background-color: #000;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  .wallpaper {
+    background: url('../../assets/images/wallpaper-1.jpg');
+    background-position: center;
+    background-size: cover;
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+}
