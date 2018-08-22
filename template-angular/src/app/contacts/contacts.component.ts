@@ -7,7 +7,12 @@ import { Contact } from '../contact';
     styleUrls: ['./contacts.component.scss']
 })
 export class ContactsComponent implements OnInit {
-    heroName = "Winston";
+    contact: Contact = {
+        id: 1,
+        name: "Winston",
+        number: "+55 3244-4455",
+        address: "Gibraltar Base, Any Ocean"
+    }
 
     constructor() { }
 

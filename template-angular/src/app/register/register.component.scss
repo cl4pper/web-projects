@@ -1,0 +1,47 @@
+@import '../../assets/colors.scss';
+
+.register {
+    margin: 10px 0;
+
+    .input-group {
+        display: flex;
+        margin: 5px 0;
+
+        %form-struct {
+            label {
+                padding: 0 5px;
+                font-size: 2em;
+            }
+
+            input {
+                width: 100%;
+                font-size: 2em;
+                padding-left: 4px;
+                border-radius: 3px;
+                background: darken($color-cyan, 10%);
+                color: $color-white;
+                border: 1px solid darken($color-cyan, 20%);
+
+                &::placeholder {
+                    color: $color-gray-300;
+                }
+            }
+        }
+
+        .put-start {
+            @extend %form-struct;
+            display: flex;
+            width: 20%;
+            justify-content: flex-start;
+        }
+
+        .put-end {
+            @extend %form-struct;
+            width: 70%;
+        }
+
+        .blank-space {
+            width: 10%;
+        }
+    }
+}
