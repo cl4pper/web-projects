@@ -8,14 +8,15 @@
 
     .contact-card {
         display: flex;
-        flex-direction: column;
-        justify-content: flex-start;
+        // flex-direction: column;
+        justify-content: space-between;
         border: 1px solid $color-blue;
         padding: 10px 10px;
         border-radius: 5px 5px 0 0;
-        cursor: pointer;
 
         .contact-info {
+            display: flex;
+            flex-direction: column;
             .contact-name {
                 color: $color-orange;
                 font-size: 2em;
@@ -23,6 +24,14 @@
             .contact-number {
                 color: $color-green;
             }
+        }
+    }
+
+    .open-details {
+        .icon {
+            color: $color-red;
+            font-weight: bold;
+            cursor: pointer;
         }
     }
 }

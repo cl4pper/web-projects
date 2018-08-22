@@ -2,6 +2,10 @@
 
 .register {
     margin: 10px 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
 
     .input-group {
         display: flex;
@@ -18,9 +22,9 @@
                 font-size: 2em;
                 padding-left: 4px;
                 border-radius: 3px;
-                background: darken($color-cyan, 10%);
+                background: $color-blue;
                 color: $color-white;
-                border: 1px solid darken($color-cyan, 20%);
+                border: 1px solid darken($color-blue, 10%);
 
                 &::placeholder {
                     color: $color-gray-300;
@@ -42,6 +46,26 @@
 
         .blank-space {
             width: 10%;
+        }
+    }
+
+    .submit-btn {
+        width: 20%;
+        border: none;
+        border-radius: 5px;
+        background: $color-blue;
+        color: $color-white;
+        font-weight: bold;
+        padding: 5px 10px;
+        font-size: 1.5em;
+        cursor: pointer;
+        box-shadow: 3px 3px 0 0 darken($color-blue, 10%);
+        outline: none;
+
+        &:active {
+            box-shadow: 1px 1px 0 0 darken($color-blue, 10%);
+            position: relative;
+            top: 2px;
         }
     }
 }
