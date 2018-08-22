@@ -1,0 +1,13 @@
+@import '../assets/colors.scss';
+
+.title-test {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    h2 {
+        color: $color-blue;
+        font-weight: bold;
+    }
+}
