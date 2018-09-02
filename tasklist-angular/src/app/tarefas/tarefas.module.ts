@@ -7,6 +7,9 @@ import { TarefaService } from './shared';
   imports: [
     CommonModule
   ],
-  declarations: []
+  declarations: [],
+  providers: [
+    TarefaService
+  ]
 })
 export class TarefasModule { }
