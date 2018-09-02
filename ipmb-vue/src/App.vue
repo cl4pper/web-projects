@@ -1,10 +1,7 @@
 <template>
   <div class="app">
-    <v-topbar></v-topbar>
-    <v-jumbotron>
-      <v-title label="IPMB" slot="jumbotron-title" fontsize=10 fontcolor="#fff"></v-title>
-      <v-subtitle label="Hello world" fontcolor="#fff"></v-subtitle>
-    </v-jumbotron>
+    <!-- the place tag where the router will be rendered -->
+    <router-view></router-view>
   </div>
 </template>
 
