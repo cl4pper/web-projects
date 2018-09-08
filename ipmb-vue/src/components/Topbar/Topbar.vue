@@ -4,8 +4,20 @@
     <!-- MOBILE VIEW -->
     <div class="group-mobile">
       <div class="inline-group">
-        <div class="item-mobile">IPMB</div>
-        <font-awesome-icon icon="bars" />
+        <!-- SITE HEADER -->
+        <div class="item-mobile">
+          <div class="header-icon"></div>
+          <div class="header-title">
+            <div class="header-title-item">Igreja</div>
+            <div class="header-title-item">Presbiteriana</div>
+            <div class="header-title-item">Memorial da Barra</div>
+          </div>
+        </div>
+
+        <!-- ICON TO OPEN TOGGLE MENU -->
+        <div class="item-mobile">
+          <font-awesome-icon icon="bars" />
+        </div>
       </div>
     </div>
     
@@ -23,7 +35,7 @@
     </div>
 
     <div class="group">
-      <div class="normal-text">Local</div>
+      <div class="normal-text">Mapa</div>
     </div>
 
     <div class="group">

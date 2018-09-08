@@ -4,14 +4,15 @@
 @import '../../assets/style/colors.scss';
 
 .topbar {
-  background: $color-topbar;
+  // background: $color-topbar;
+  // box-shadow: 0 2px 1px 1px $color-black;
   font-family: 'Roboto', sans-serif;
+  opacity: 1;
   width: 95%;
   height: 70px;
-  position: fixed;
+  position: absolute;
   top: 15px;
   border-radius: 8px;
-  box-shadow: 0 2px 1px 1px $color-black;
   display: flex;
   justify-content: space-around;
   align-items: center;
@@ -47,7 +48,6 @@
 
       &:hover {
         font-size: $default-size * 2.5;
-        color: $color-topbar-hover;
         font-weight: bold;
       }
     }
@@ -58,7 +58,6 @@
 
       &:hover {
         font-size: $default-size * 1.5;
-        color: $color-topbar-hover;
         font-weight: bold;
       }
     }
@@ -70,7 +69,6 @@
     width: 100%;
     border-radius: 0;
     top: 0;
-    box-shadow: 0 2px $color-black;
 
     .group {
       display: none;
@@ -78,7 +76,7 @@
 
     .group-mobile {
       width: 100%;
-      color: $color-site-light;
+      color: $color-topbar;
       font-size: 5em;
       display: flex;
       justify-content: center;
@@ -89,6 +87,23 @@
         display: flex;
         justify-content: space-between;
         align-items: center;
+
+        .item-mobile {
+          display: flex;
+          align-items: center;
+
+          .header-icon {
+            background: $color-topbar;
+            height: 5vh;
+            width: 5vh;
+            border-radius: 50%;
+            margin-right: 15px;
+          }
+
+          .header-title {
+            font-size: .3em;
+          }
+        }
       }
     }
   }

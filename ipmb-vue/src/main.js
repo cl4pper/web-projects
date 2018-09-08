@@ -17,7 +17,7 @@ Vue.component('font-awesome-icon', FontAwesomeIcon)
 Vue.config.productionTip = false
 
 const routes = [
-  { path: '/home', component: Home },
+  { path: '/inicio', component: Home },
   { path: '/local', component: Local },
 ];
 

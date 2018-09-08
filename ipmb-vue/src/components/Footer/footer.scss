@@ -1,0 +1,63 @@
+// STYLESHEET FOR FOOTER
+
+// IMPORTS COLORS
+@import '../../assets/style/colors.scss';
+
+.footer {
+	// height: 200px;
+	width: 100%;
+	z-index: 5;
+	background: $color-topbar;
+	position: absolute;
+	top: 100vh;
+	color: $color-white;
+	font-family: 'Roboto', sans-serif;
+	text-align: center;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+
+	.footer-content {
+		padding: 30px;
+		color: $color-white;
+
+		.item {
+			margin: 10px 0;
+			font-size: 1em;
+			cursor: pointer;
+
+			&:active {
+				position: relative;
+				top: 2px;
+			}
+		}
+	}
+
+	.social-links {
+		padding: 5px;
+		color: $color-white;
+		font-size: 2em;
+		display: flex;
+
+		.links-item {
+			width: 1.5em;
+			height: 1.5em;
+			margin: 0 20px;
+			cursor: pointer;
+			border-radius: 8px;
+			border: 1px solid $color-white;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+
+			&:active {
+				position: relative;
+				top: 2px;
+			}
+		}
+	}
+
+	@media only screen and (max-width: 1000px) {
+		display: none;
+	}
+}
