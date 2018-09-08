@@ -1,0 +1,19 @@
+// STYLESHEET FOR LINKS
+
+@import '../../assets/style/colors.scss';
+
+$font-default: 1em;
+
+.link {
+	cursor: pointer;
+	border: 1px solid #fff;
+	background: blue;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+
+	&:hover {
+		color: blue;
+		font-weight: bold;
+	}
+}
