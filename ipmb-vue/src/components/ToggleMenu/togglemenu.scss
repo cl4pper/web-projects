@@ -1,0 +1,17 @@
+// STYLESHEET FOR TOGGLE MENU
+
+// IMPORTS COLORS
+@import '../../assets/style/colors.scss';
+
+.toggle-menu {
+	display: none;
+
+	@media only screen and (max-width: 1000px) {
+		position: fixed;
+		top: 8vh;
+		z-index: 5;
+		width: 100%;
+		height: 92vh;
+		background: #333A41;
+	}
+}

@@ -1,41 +1,40 @@
 <template>
   <div class="topbar">
 
+    <!-- MOBILE VIEW -->
     <div class="group-mobile">
-      <!-- <i class="fas fa-bars"></i> -->
-      <font-awesome-icon icon="bars" /> 
+      <div class="inline-group">
+        <div class="item-mobile">IPMB</div>
+        <font-awesome-icon icon="bars" />
+      </div>
     </div>
-    <!-- <p class="icon-open">&#9776;</p> -->
+    
+    <!-- DESKTOP VIEW -->
     <div class="group">
-      <div class="normal-item">Missão</div>
+      <div class="normal-text">Missão</div>
     </div>
     
     <div class="group">
-      <div class="normal-item">Quem somos</div>
+      <div class="normal-text">Quem somos</div>
     </div>
     
     <div class="group">
-      <div class="main-item">IPMB</div>
+      <div class="main-text">IPMB</div>
     </div>
 
     <div class="group">
-      <div class="normal-item">Local</div>
+      <div class="normal-text">Local</div>
     </div>
 
     <div class="group">
-      <!-- <div class="normal-item"><v-link fontColor="white"></v-link></div> -->
-      <div class="normal-item">Horários</div>
+      <div class="normal-text">Horários</div>
     </div>
   </div>
 </template>
 
 <script>
-import Link from '../Link/Link.vue';
 export default {
   name: 'topbar',
-  components: {
-    vLink: Link,
-  }
 }
 </script>
 
